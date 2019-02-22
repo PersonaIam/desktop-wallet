@@ -1,15 +1,6 @@
 <template>
   <div class="Dashboard relative flex flex-row h-full w-full">
     <main class="bg-theme-feature rounded-lg lg:mr-4 flex-1 w-full flex-col overflow-y-auto">
-      <div
-        v-if="isChartEnabled && isMarketEnabled"
-        class="bg-theme-chart-background pt-10 px-10 pb-4 rounded-t-lg"
-      >
-        <MarketChart :is-active="isMarketEnabled">
-          <MarketChartHeader class="mb-5" />
-        </MarketChart>
-      </div>
-
       <div class="p-10">
         <h3 class="flex items-center">
           {{ $t('PAGES.DASHBOARD.LAST_TRANSACTIONS') }}
@@ -37,7 +28,8 @@
 
 <script>
 import { DashboardTransactions } from '@/components/Dashboard'
-import { MarketChart, MarketChartHeader } from '@/components/MarketChart'
+// TODO_TEMPORARY_DISABLE
+// import { MarketChart, MarketChartHeader } from '@/components/MarketChart'
 import { WalletSidebar, WalletButtonCreate, WalletButtonImport } from '@/components/Wallet'
 import store from '@/store'
 
@@ -46,8 +38,8 @@ export default {
 
   components: {
     DashboardTransactions,
-    MarketChart,
-    MarketChartHeader,
+    // MarketChart,
+    // MarketChartHeader,
     WalletSidebar,
     WalletButtonCreate,
     WalletButtonImport

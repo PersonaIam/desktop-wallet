@@ -7,7 +7,7 @@ export default {
     },
 
     formatter_networkCurrency (value, digits) {
-      return this.currency_format(this.currency_subToUnit(value), { currencyFrom: 'network', maximumFractionDigits: digits })
+      return this.currency_format(this.currency_subToUnit(value), { currency: 'PRSN', maximumFractionDigits: digits })
     },
 
     formatter_votes (value) {
@@ -21,10 +21,9 @@ export default {
         return moment(value).format(format)
       }
 
-      const timeFormat = this.session_profile.timeFormat
-
-      // default = L LTS, 12h = L h:mm:ss, 24h = L HH:mm:ss
+      // Default = L LTS, 12h = L h:mm:ss, 24h = L HH:mm:ss
       let defaultFormat = 'L LTS'
+      const timeFormat = this.session_profile.timeFormat
       if (timeFormat === '12h') {
         defaultFormat = 'L h:mm:ss A'
       } else if (timeFormat === '24h') {

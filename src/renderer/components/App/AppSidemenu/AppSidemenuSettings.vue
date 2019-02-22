@@ -2,7 +2,7 @@
   <div
     v-click-outside="emitClose"
     :class="isHorizontal ? 'AppSidemenuOptionsSettings--horizontal' : 'AppSidemenuOptionsSettings'"
-    class="absolute z-20 theme-dark"
+    class="absolute z-20"
   >
     <MenuOptions
       :is-horizontal="isHorizontal"
@@ -38,7 +38,7 @@
             ref="dark-switch"
             :is-active="session_hasDarkTheme"
             class="theme-dark"
-            background-color="var(--theme-settings-switch)"
+            background-color="#414767"
             @change="setTheme"
           />
         </div>
@@ -57,7 +57,7 @@
             ref="protection-switch"
             :is-active="contentProtection"
             class="theme-dark"
-            background-color="var(--theme-settings-switch)"
+            background-color="#414767"
             @change="setProtection"
           />
         </div>
@@ -75,7 +75,7 @@
             ref="ledger-background-switch"
             :is-active="backgroundUpdateLedger"
             class="theme-dark"
-            background-color="var(--theme-settings-switch)"
+            background-color="#414767"
             @change="setBackgroundUpdateLedger"
           />
         </div>
@@ -93,7 +93,7 @@
             ref="broadcast-peers"
             :is-active="sessionBroadcastPeers"
             class="theme-dark"
-            background-color="var(--theme-settings-switch)"
+            background-color="#414767"
             @change="setBroadcastPeers"
           />
         </div>
@@ -112,7 +112,7 @@
             ref="show-market-chart"
             :is-active="sessionIsMarketChartEnabled"
             class="theme-dark"
-            background-color="var(--theme-settings-switch)"
+            background-color="#414767"
             @change="setIsMarketChartEnabled"
           />
         </div>

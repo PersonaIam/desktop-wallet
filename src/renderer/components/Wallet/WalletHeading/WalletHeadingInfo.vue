@@ -91,12 +91,12 @@
 
       <p class="WalletHeading__balance font-semibold tracking-extrawide text-xg">
         {{ balance }}
-        <span
-          v-if="isMarketEnabled"
-          class="WalletHeading__balance__alternative text-xs text-theme-heading-text"
-        >
-          {{ alternativeBalance }}
-        </span>
+        <!-- TODO_TEMPORARY_DISABLE <span-->
+        <!--v-if="isMarketEnabled"-->
+        <!--class="WalletHeading__balance__alternative text-xs text-theme-heading-text"-->
+        <!--&gt;-->
+        <!--{{ alternativeBalance }}-->
+        <!--</span>-->
       </p>
     </div>
   </div>

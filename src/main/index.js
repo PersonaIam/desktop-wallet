@@ -1,5 +1,6 @@
 'use strict'
 
+import 'babel-polyfill'
 import { app, BrowserWindow, screen } from 'electron'
 import winState from 'electron-window-state'
 import packageJson from '../../package.json'
@@ -13,13 +14,6 @@ require('electron-log')
  */
 if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
-}
-
-// To E2E tests
-if (process.env.TEMP_USER_DATA === 'true') {
-  const tempy = require('tempy')
-  const tempDirectory = tempy.directory()
-  app.setPath('userData', tempDirectory)
 }
 
 let mainWindow = null
@@ -48,6 +42,7 @@ function createWindow () {
 
   windowState.manage(mainWindow)
   mainWindow.loadURL(winURL)
+  mainWindow.restore()
   mainWindow.once('ready-to-show', () => {
     mainWindow.show()
   })

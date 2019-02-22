@@ -8,8 +8,7 @@ const releaseService = require('../renderer/services/release').default
 const isProduction = process.env.NODE_ENV === 'production'
 
 const copyright = [
-  `<p style="text-align: center">Distributed under ${packageJson.license} license</p>`,
-  '<p>Flag icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">flaticon.com</a> are licensed by <a href="http://creativecommons.org/licenses/by/3.0/"  title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></p>'
+  `<p style="text-align: center">Distributed under ${packageJson.license} license</p>`
 ].join('')
 
 const about = {

@@ -270,13 +270,10 @@ export default {
     },
 
     onSortChange (sortOptions) {
-      const columnName = sortOptions[0].field
-      const sortType = sortOptions[0].type
-
       this.__updateParams({
         sort: {
-          field: columnName,
-          type: sortType
+          type: sortOptions[0].type,
+          field: sortOptions[0].field
         },
         page: 1
       })

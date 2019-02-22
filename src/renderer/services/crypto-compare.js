@@ -3,7 +3,7 @@ import { MARKET } from '@config'
 import i18n from '@/i18n'
 import alertEvents from '@/plugins/alert-events'
 import dayjs from 'dayjs'
-import { capitalize, keys, min, max } from 'lodash'
+import { keys, min, max } from 'lodash'
 import logger from 'electron-log'
 
 class CryptoCompare {
@@ -91,8 +91,9 @@ class CryptoCompare {
    * @return {(Object|null)} Return API response data or null on failure
    */
   async historicByType (type, token, currency) {
-    const method = `historicPer${capitalize(type)}`
-    return this[method](token, currency)
+    // TODO_TEMPORARY_DISABLE
+    // const method = `historicPer${capitalize(type)}`
+    return null
   }
 
   /**

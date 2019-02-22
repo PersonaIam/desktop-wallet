@@ -5,6 +5,7 @@ import VTooltip from 'v-tooltip'
 import VueGoodTablePlugin from 'vue-good-table'
 import PortalVue from 'portal-vue'
 import logger from 'electron-log'
+import 'babel-polyfill'
 
 import App from './App'
 import i18n from './i18n'

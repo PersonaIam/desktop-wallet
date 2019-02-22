@@ -24,6 +24,7 @@ export default {
    * @return {Object} the release data
    */
   async fetchLatestRelease (url) {
+    console.log(this.latestReleaseApiUrl)
     const response = await axios.get(this.latestReleaseApiUrl)
     return response.data
   }

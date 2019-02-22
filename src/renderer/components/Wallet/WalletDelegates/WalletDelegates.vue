@@ -83,6 +83,7 @@
 import { ButtonClose } from '@/components/Button'
 import TransactionModal from '@/components/Transaction/TransactionModal'
 import TableWrapper from '@/components/utils/TableWrapper'
+import { orderBy } from 'lodash'
 
 export default {
   name: 'WalletDelegates',
@@ -141,11 +142,9 @@ export default {
         }
       ]
     },
-
     isExplanationDisplayed () {
       return this.$store.getters['app/showVotingExplanation']
     },
-
     votingUrl () {
       return 'https://docs.ark.io/tutorials/usage-guides/how-to-vote-in-the-ark-desktop-wallet.html'
     }
@@ -169,21 +168,15 @@ export default {
     },
 
     async fetchDelegates () {
-      if (this.isLoading) {
-        return
-      }
+      if (this.isLoading) return
 
       try {
         this.isLoading = true
-
-        const { limit, page, sort } = this.queryParams
         const { delegates, totalCount } = await this.$client.fetchDelegates({
-          page,
-          limit,
-          orderBy: `${sort.field.replace('production.', '')}:${sort.type}`
+          page: this.queryParams.page,
+          limit: this.queryParams.limit
         })
-
-        this.delegates = delegates
+        this.delegates = this.__sortDelegates(delegates)
         this.totalCount = totalCount
       } catch (error) {
         this.$logger.error(error)
@@ -233,8 +226,8 @@ export default {
       const sortType = sortOptions[0].type
       this.__updateParams({
         sort: {
-          field: columnName,
-          type: sortType
+          type: sortType,
+          field: columnName
         },
         page: 1
       })
@@ -246,6 +239,10 @@ export default {
       this.queryParams.page = 1
       this.totalCount = 0
       this.delegates = []
+    },
+
+    __sortDelegates (delegates = this.delegates) {
+      return orderBy(delegates, [this.queryParams.sort.field], [this.queryParams.sort.type])
     },
 
     __updateParams (newProps) {

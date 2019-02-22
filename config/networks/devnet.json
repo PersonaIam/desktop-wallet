@@ -1,11 +1,11 @@
 {
-  "id": "ark.devnet",
-  "name": "ARK Devnet",
-  "title": "ARK Devnet",
-  "server": "https://dexplorer.ark.io:8443",
-  "description": "The ARK Devnet is only used for R&D by engineers.",
-  "imagePath": "networks/ark.devnet.svg",
-  "apiVersion": 2,
+  "id": "testnet",
+  "name": "Persona Testnet",
+  "title": "Testnet",
+  "server": "https://testnet-explorer.persona.im/",
+  "description": "Persona Testnet",
+  "imagePath": "networks/default.svg",
+  "apiVersion": 1,
   "slip44": "1",
   "market": {
     "enabled": false,
@@ -49,13 +49,13 @@
     "activeDelegates": 51,
     "epoch": "2017-03-21T13:00:00.000Z"
   },
-  "nethash": "2a44f340d76ffc3df204c5f38cd355b7496c9065a1ade2ef92071436bd72e867",
-  "explorer": "https://dexplorer.ark.io",
-  "token": "DARK",
-  "subunit": "darktoshi",
-  "symbol": "DѦ",
+  "nethash": "a6a53c0da7822012da6de41cdcaef2ecad885c7df2fc97011e5c40c5684f80a9",
+  "explorer": "https://explorer.persona.im",
+  "token": "TPRSN",
+  "subunit": "toshi",
+  "symbol": "TP",
   "fractionDigits": 8,
-  "version": 30,
+  "version": 66,
   "wif": 170,
   "knownWallets": {}
 }

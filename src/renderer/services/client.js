@@ -137,23 +137,20 @@ export default class ClientService {
    * @param {Object} [query]
    * @param {Number} [query.page=1]
    * @param {Number} [query.limit=51]
-   * @param {String} [query.orderBy='rank:asc']
    * @return {Object[]}
    */
-  async fetchDelegates (options = {}) {
+  async fetchDelegates ({ page, limit } = {}) {
     const network = store.getters['session/network']
-    options.page || (options.page = 1)
-    options.limit || (options.limit = network.constants.activeDelegates)
-    options.orderBy || (options.orderBy = 'rank:asc')
+    page || (page = 1)
+    limit || (limit = network.constants.activeDelegates)
 
     let totalCount = 0
     let delegates = []
 
     if (this.__version === 1) {
       const { data } = await this.client.resource('delegates').all({
-        offset: (options.page - 1) * options.limit,
-        limit: options.limit,
-        orderBy: options.orderBy
+        offset: (page - 1) * limit,
+        limit
       })
 
       delegates = data.delegates.map(delegate => {
@@ -173,11 +170,7 @@ export default class ClientService {
 
       totalCount = parseInt(data.totalCount)
     } else {
-      const { data } = await this.client.resource('delegates').all({
-        page: options.page,
-        limit: options.limit,
-        orderBy: options.orderBy
-      })
+      const { data } = await this.client.resource('delegates').all({ page, limit })
       delegates = data.data
       totalCount = data.meta.totalCount
     }

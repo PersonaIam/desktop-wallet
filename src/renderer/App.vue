@@ -216,7 +216,7 @@ export default {
       try {
         await this.$store.dispatch('app/checkNewVersion')
       } catch (error) {
-        this.$error(this.$t('APP.RELEASE.REQUEST_ERROR'))
+        // this.$error(this.$t('APP.RELEASE.REQUEST_ERROR')) TODO_TEMPORARY_DISABLE
       }
     },
 

@@ -14,10 +14,10 @@
       <RouterLink
         :title="$t('APP_SIDEMENU.DASHBOARD')"
         :to="{ name: 'dashboard' }"
-        class="AppSidemenu__logo bg-red hover:opacity-85 flex justify-center items-center"
+        class="AppSidemenu__logo bg-blue hover:opacity-85 flex justify-center items-center"
         @click.native="redirect('dashboard')"
       >
-        <img src="@/assets/images/ark-logo.png">
+        <img src="@/assets/images/persona-logo.png">
       </RouterLink>
 
       <div class="AppSidemenu__container__scrollable flex-1 overflow-y-auto flexify justify-between bg-theme-feature">
@@ -33,14 +33,15 @@
           />
 
           <!-- Add contact -->
-          <MenuNavigationItem
-            id="contacts"
-            :title="$t('APP_SIDEMENU.CONTACTS')"
-            :is-horizontal="isHorizontal"
-            class="AppSidemenu__item"
-            icon="contact-add"
-            @click="redirect($event)"
-          />
+          <!--TODO_TEMPORARY_DISABLE-->
+          <!--<MenuNavigationItem-->
+          <!--id="contacts"-->
+          <!--:title="$t('APP_SIDEMENU.CONTACTS')"-->
+          <!--:is-horizontal="isHorizontal"-->
+          <!--class="AppSidemenu__item"-->
+          <!--icon="contact-add"-->
+          <!--@click="redirect($event)"-->
+          <!--/>-->
 
           <!-- Announcements -->
           <MenuNavigationItem
@@ -54,15 +55,16 @@
           />
         </div>
 
-        <div class="flexify">
-          <!-- Important notification / new releases -->
-          <AppSidemenuImportantNotification
-            v-if="isImportantNotificationVisible && hasNewRelease"
-            :is-horizontal="isHorizontal"
-            class="AppSidemenu__item"
-            @close="hideImportantNotification"
-          />
-        </div>
+        <!--TODO_TEMPORARY_DISABLE-->
+        <!--<div class="flexify">-->
+        <!--&lt;!&ndash; Important notification / new releases &ndash;&gt;-->
+        <!--<AppSidemenuImportantNotification-->
+        <!--v-if="isImportantNotificationVisible && hasNewRelease"-->
+        <!--:is-horizontal="isHorizontal"-->
+        <!--class="AppSidemenu__item"-->
+        <!--@close="hideImportantNotification"-->
+        <!--/>-->
+        <!--</div>-->
 
         <div class="flexify">
           <AppSidemenuSettings
@@ -140,7 +142,7 @@ import { mapGetters } from 'vuex'
 import releaseService from '@/services/release'
 import AppSidemenuSettings from './AppSidemenuSettings'
 import AppSidemenuNetworkStatus from './AppSidemenuNetworkStatus'
-import AppSidemenuImportantNotification from './AppSidemenuImportantNotification'
+// import AppSidemenuImportantNotification from './AppSidemenuImportantNotification'
 import { MenuNavigation, MenuNavigationItem } from '@/components/Menu'
 import { ProfileAvatar } from '@/components/Profile'
 import SvgIcon from '@/components/SvgIcon'
@@ -151,7 +153,7 @@ export default {
   components: {
     AppSidemenuSettings,
     AppSidemenuNetworkStatus,
-    AppSidemenuImportantNotification,
+    // AppSidemenuImportantNotification,
     MenuNavigation,
     MenuNavigationItem,
     ProfileAvatar,

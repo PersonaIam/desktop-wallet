@@ -96,7 +96,7 @@ export default {
     },
 
     currency_subToUnit (value, network) {
-      const { fractionDigits } = network || this.session_network
+      const { fractionDigits } = network || this.$store.getters['network/byToken']('PRSN')
       return new BigNumber(value.toString()).dividedBy(Math.pow(10, fractionDigits)).toString()
     },
 

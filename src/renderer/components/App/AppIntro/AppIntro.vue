@@ -257,7 +257,7 @@ export default {
     language: I18N.defaultLocale,
     step: 0,
     stepImages: [
-      'pages/intro/welcome.svg',
+      'networks/default.svg',
       'pages/intro/power.svg',
       'pages/intro/duty.svg',
       'pages/intro/responsibility.svg',
@@ -301,7 +301,7 @@ export default {
 
 <style lang="postcss" scoped>
 .AppIntro__1 .AppIntroScreen__container__left {
-  background-color: #c9292c;
+  background-color: #0000ff;
 }
 .AppIntro__1__languages {
   @apply .border-2 .rounded

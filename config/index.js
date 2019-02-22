@@ -1,5 +1,5 @@
 exports.APP = {
-  website: 'https://ark.io',
+  website: 'https://persona.im',
   transactionExpiryMinutes: 45
 }
 
@@ -9,12 +9,12 @@ exports.NETWORKS = [
 ]
 
 exports.PEERS = {
-  'ark.mainnet': require('./peers/mainnet.json'),
-  'ark.devnet': require('./peers/devnet.json')
+  'mainnet': require('./peers/mainnet.json'),
+  'testnet': require('./peers/devnet.json')
 }
 
 exports.ANNOUNCEMENTS = {
-  rssUrl: 'https://blog.ark.io/feed'
+  rssUrl: 'https://medium.com/feed/personablockchain'
 }
 
 exports.I18N = {
@@ -27,14 +27,6 @@ exports.I18N = {
 exports.BIP39 = {
   defaultLanguage: 'english',
   languages: [
-    'chinese_simplified',
-    'chinese_traditional',
-    'english',
-    'french',
-    'italian',
-    'japanese',
-    'korean',
-    'spanish'
   ]
 }
 

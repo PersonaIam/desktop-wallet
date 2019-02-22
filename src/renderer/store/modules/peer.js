@@ -65,23 +65,18 @@ export default {
 
         networkId = profile.networkId
       }
-
-      const networkPeers = state.all[networkId]
-      let peers = []
-      if (networkPeers) {
-        peers = Object.values(networkPeers.peers)
-      }
+      const networkPeers = config.PEERS[networkId]
 
       if (ignoreCurrent) {
-        const currentPeer = getters['current']()
-        if (currentPeer) {
-          peers = peers.filter(peer => {
-            return peer.ip !== currentPeer.ip
-          })
-        }
+        // const currentPeer = getters['current']()
+        // if (currentPeer) {
+        //   peers = peers.filter(peer => {
+        //     return peer.ip !== currentPeer.ip
+        //   })
+        // }
       }
 
-      return peers
+      return networkPeers
     },
 
     /**
@@ -303,8 +298,8 @@ export default {
       }
 
       const networkLookup = {
-        'ark.mainnet': 'mainnet',
-        'ark.devnet': 'devnet'
+        'mainnet': 'mainnet',
+        'testnet': 'testnet'
       }
       let peers = await this._vm.$client.fetchPeers(networkLookup[network.id], getters['all']())
       if (peers.length) {
@@ -398,7 +393,9 @@ export default {
         throw new Error('Not connected to peer')
       }
 
-      let networkConfig = await ClientService.fetchNetworkConfig(getBaseUrl(peer), getApiVersion(peer))
+      let apiVersion = getApiVersion(peer)
+      let baseUrl = getBaseUrl(peer)
+      let networkConfig = await ClientService.fetchNetworkConfig(baseUrl, apiVersion)
       if (networkConfig.nethash !== rootGetters['session/network'].nethash) {
         throw new Error('Wrong network')
       }

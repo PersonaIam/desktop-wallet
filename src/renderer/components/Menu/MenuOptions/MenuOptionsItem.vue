@@ -4,12 +4,12 @@
     @click="emitClick"
   >
     <div
-      :class="hasControls ? 'border-dashed' : 'border-solid'"
+      :class="$slots['controls'] ? 'border-dashed' : 'border-solid'"
       class="MenuOptionsItem__container transition flex items-center justify-between mx-10 py-5 border-b border-theme-settings-border"
     >
       <div class="select-none">
         <slot name="title">
-          <span :class="hasControls ? 'text-theme-settings-control-title' : ''">
+          <span :class="$slots['controls'] ? 'text-grey-light' : ''">
             {{ title }}
           </span>
         </slot>
@@ -33,12 +33,6 @@ export default {
     }
   },
 
-  computed: {
-    hasControls () {
-      return !!this.$slots.controls
-    }
-  },
-
   methods: {
     emitClick () {
       this.$emit('click')
@@ -49,8 +43,8 @@ export default {
 
 <style scoped>
 .MenuOptionsItem:hover {
-  background-color: var(--theme-settings-hover);
-  color: var(--theme-settings-text-hover);
+  background-color: #3a4060;
+  color: #b3bbe8;
 }
 .MenuOptionsItem:hover > .MenuOptionsItem__container {
   border-color: transparent;

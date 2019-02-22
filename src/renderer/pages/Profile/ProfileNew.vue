@@ -67,16 +67,6 @@
                 />
               </div>
 
-              <div class="flex mb-5 w-1/2 ProfileNew__time-format-container">
-                <InputSelect
-                  v-model="timeFormat"
-                  :items="timeFormats"
-                  :label="$t('COMMON.TIME_FORMAT')"
-                  name="time-format"
-                  class="flex-1"
-                />
-              </div>
-
               <div class="flex items-center justify-between mt-5 pt-5 mb-2 border-t border-theme-line-separator border-dashed">
                 <div class="mr-2">
                   <h5 class="mb-2">
@@ -246,14 +236,6 @@ export default {
         this.selectTheme(theme)
       }
     },
-    timeFormat: {
-      get () {
-        return this.$store.getters['session/timeFormat'] || 'Default'
-      },
-      set (timeFormat) {
-        this.selectTimeFormat(timeFormat)
-      }
-    },
     currencies () {
       return this.$store.getters['market/currencies']
     },
@@ -261,12 +243,6 @@ export default {
       return BIP39.languages.reduce((all, language) => {
         all[language] = this.$t(`BIP39_LANGUAGES.${language}`)
 
-        return all
-      }, {})
-    },
-    timeFormats () {
-      return ['Default', '12h', '24h'].reduce((all, format) => {
-        all[format] = this.$t(`TIME_FORMAT.${format.toUpperCase()}`)
         return all
       }, {})
     },
@@ -304,7 +280,9 @@ export default {
     this.schema.language = this.language
     this.schema.currency = this.currency
     this.schema.theme = this.theme
-    this.selectNetwork(this.defaultNetworks.find(network => network.id === 'ark.mainnet'))
+
+    let network1 = this.defaultNetworks.find(network => network.id === 'mainnet')
+    this.selectNetwork(network1)
   },
 
   destroyed () {
@@ -366,11 +344,6 @@ export default {
     async selectTheme (theme) {
       this.schema.theme = theme
       await this.$store.dispatch('session/setTheme', theme)
-    },
-
-    async selectTimeFormat (timeFormat) {
-      this.schema.timeFormat = timeFormat
-      await this.$store.dispatch('session/setTimeFormat', timeFormat)
     }
   },
 
@@ -387,10 +360,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.ProfileNew__time-format-container {
-  /* To produce the exact same width  (.pr-5 class / 2) */
-  padding-right: 0.625rem
-}
-</style>

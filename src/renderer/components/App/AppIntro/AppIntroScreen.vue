@@ -1,12 +1,12 @@
 <template>
-  <div class="AppIntroScreen flex flex-row w-full h-full">
+  <div class="flex flex-row w-full h-full">
     <div class="AppIntroScreen__container__left flex-1 animated fadeIn rounded-lg hidden lg:block">
       <div
         v-if="showLogo"
         class="AppIntroScreen__container__left__logo"
       >
         <img
-          :src="assets_loadImage('ark-logo.png')"
+          :src="assets_loadImage('persona-logo.png')"
           class="h-full"
         >
       </div>
@@ -37,13 +37,13 @@
               <ButtonGeneric
                 v-if="showBack"
                 :label="$t('COMMON.BACK')"
-                class="AppIntroScreen__container__right__back mr-0"
+                class="mr-0"
                 @click="emitBack"
               />
               <ButtonGeneric
                 v-if="showNext"
                 :label="$t('COMMON.NEXT')"
-                class="AppIntroScreen__container__right__next ml-2"
+                class="ml-2"
                 @click="emitNext"
               />
             </div>
@@ -128,11 +128,11 @@ export default {
 }
 
 .AppIntroScreen__container__left {
-  background-color: #2d2f38;
+  background-color: #0000ff;
 }
 
 .AppIntroScreen__container__left__logo {
-  background-color: #c9292c;
+  background-color: #393C6d;
   @apply .absolute .h-18 .w-18 .px-3 .py-4 .rounded-tl-lg .rounded-br-lg
 }
 
