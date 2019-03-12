@@ -273,7 +273,7 @@ export default {
           let hasCold = false
           const filteredWallets = []
           for (const ledgerWallet of ledgerWallets) {
-            const wallet = walletData.find(wallet => wallet.address === ledgerWallet.address)
+            const wallet = walletData.find(wallet => wallet && ledgerWallet && wallet.address === ledgerWallet.address)
             if (!wallet || (wallet.balance === 0 && !wallet.publicKey)) {
               filteredWallets.push({ ...ledgerWallet, balance: 0, isCold: true })
               hasCold = true

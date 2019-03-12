@@ -109,18 +109,18 @@
           >
             <RouterLink
               :class="{
-                'h-12 w-12': session_profile.avatar && isHorizontal,
-                'h-18 w-18': session_profile.avatar && !isHorizontal
+                'h-12 w-12': session_profile && session_profile.avatar && isHorizontal,
+                'h-18 w-18': session_profile && session_profile.avatar && !isHorizontal
               }"
-              :style="session_profile.avatar ? `backgroundImage: url('${assets_loadImage(session_profile.avatar)}')` : ''"
-              :title="$t('APP_SIDEMENU.CURRENT_PROFILE', { profileName: session_profile.name })"
+              :style="session_profile && session_profile.avatar ? `backgroundImage: url('${assets_loadImage(session_profile.avatar)}')` : ''"
+              :title="$t('APP_SIDEMENU.CURRENT_PROFILE', { profileName: session_profile ? session_profile.name : ''})"
               :to="{ name: 'profiles' }"
               class="AppSidemenu__avatar flex background-image bg-center bg-no-repeat border-none"
             >
               <ProfileAvatar
                 :profile="session_profile"
                 letter-size="xl"
-                :title="$t('APP_SIDEMENU.CURRENT_PROFILE', { profileName: session_profile.name })"
+                :title="$t('APP_SIDEMENU.CURRENT_PROFILE', { profileName: session_profile ? session_profile.name : '' })"
               >
                 <SvgIcon
                   class="AppSidemenu__avatar__dots text-grey-dark"

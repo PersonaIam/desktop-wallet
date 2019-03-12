@@ -57,7 +57,6 @@ class LedgerService {
         await this.transport.close()
       }
     } catch (error) {
-      logger.error(error)
     }
   }
 

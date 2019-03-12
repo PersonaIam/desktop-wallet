@@ -181,7 +181,6 @@ export default {
           // If we get here, it means that none of the responses was successful, so pick one and show the error
           const response = responseArray[0]
           const { errors } = response.data
-
           const anyLowFee = Object.keys(errors).some(transactionId => {
             return errors[transactionId].some(error => error.type === 'ERR_LOW_FEE')
           })

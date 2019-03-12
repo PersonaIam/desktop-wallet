@@ -146,12 +146,11 @@ export default class ClientService {
 
     let totalCount = 0
     let delegates = []
-
     if (this.__version === 1) {
       const { data } = await this.client.resource('delegates').all({
         offset: (page - 1) * limit,
         limit
-      })
+      }).catch(() => {})
 
       delegates = data.delegates.map(delegate => {
         return {
@@ -170,7 +169,7 @@ export default class ClientService {
 
       totalCount = parseInt(data.totalCount)
     } else {
-      const { data } = await this.client.resource('delegates').all({ page, limit })
+      const { data } = await this.client.resource('delegates').all({ page, limit }).catch(() => {})
       delegates = data.data
       totalCount = data.meta.totalCount
     }
@@ -534,8 +533,7 @@ export default class ClientService {
     } else if (!network && !peers.length) {
       peers = [this.__parseCurrentPeer()]
     }
-
-    return ApiClient.findPeers(network, this.client.version, peers)
+    return peers && peers.length > 0 ? peers : [] // The previous API call fetched ARK peers, so kind of useles
   }
 
   /**

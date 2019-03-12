@@ -1,7 +1,7 @@
 {
   "id": "mainnet",
   "name": "PERSONA Mainnet",
-  "title": "PERSONA Mainnet",
+  "title": "Mainnet",
   "server": "http://89.40.7.63:4102",
   "description": "Persona Mainnet",
   "imagePath": "networks/default.svg",

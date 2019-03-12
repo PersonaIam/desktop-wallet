@@ -29,19 +29,18 @@ export default class TransactionService {
    */
   static async ledgerSign (wallet, transactionObject, vm) {
     transactionObject.senderPublicKey(wallet.publicKey)
-
     if (transactionObject.data.type === TRANSACTION_TYPES.VOTE) {
-      transactionObject.recipientId = wallet.address
+      transactionObject.data.recipientId = wallet.address
     }
     transactionObject.data.signature = await vm.$store.dispatch('ledger/signTransaction', {
-      transactionHex: this.getBytes(transactionObject.data),
+      transactionHex: this.getBytes(transactionObject.data).toString('hex'),
       accountIndex: wallet.ledgerIndex
     })
-    let transaction = transactionObject.getStruct()
-    if (!transaction.signature) {
+    if (!transactionObject.data.signature) {
       throw new Error(vm.$t('TRANSACTION.LEDGER_USER_DECLINED'))
     }
-
+    let transaction = transactionObject.getStruct()
+    transaction.recipientId = transactionObject.data.recipientId
     transaction.id = this.getId(transaction)
 
     return transaction

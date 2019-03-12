@@ -301,8 +301,9 @@ export default {
         'mainnet': 'mainnet',
         'testnet': 'testnet'
       }
+
       let peers = await this._vm.$client.fetchPeers(networkLookup[network.id], getters['all']())
-      if (peers.length) {
+      if (peers && peers.length) {
         for (const peer of peers) {
           peer.height = +peer.height
           if (getApiVersion(peer) === 2) {
@@ -318,14 +319,13 @@ export default {
         }
 
         dispatch('set', peers)
-      } else {
-        this._vm.$error(i18n.t('PEER.FAILED_REFRESH'))
       }
     },
 
     /**
      * Get best peer for current network.
      * @param  {Boolean} [refresh=true]
+     * @param network
      * @param  {Boolean} [skipIfCustom=true]
      * @return {(Object|null)}
      */
@@ -334,7 +334,7 @@ export default {
         try {
           await dispatch('refresh', network)
         } catch (error) {
-          this._vm.$error(`${i18n.t('PEER.FAILED_REFRESH')}: ${error.message}`)
+          this._vm.$error(`${i18n.t('PEER.FAILED_REFRESH')} ... ${error.message}`)
         }
       }
 

@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "PersonaClient",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PersonaIam/desktop-wallet.git"
@@ -12,7 +12,8 @@
     "ItsANameToo <itsanametoo@protonmail.com>",
     "Juan A. Martín <juan@ark.io>",
     "Lúcio Rubens <lucio@ark.io>",
-    "Mario Vega <mario@ark.io>"
+    "Mario Vega <mario@ark.io>",
+    "Remus Golgot <remus@persona.im>"
   ],
   "description": "Persona Desktop Wallet",
   "license": "MIT",

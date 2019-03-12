@@ -52,6 +52,7 @@
   "nethash": "a6a53c0da7822012da6de41cdcaef2ecad885c7df2fc97011e5c40c5684f80a9",
   "explorer": "https://explorer.persona.im",
   "token": "TPRSN",
+  "currency": "TPRSN",
   "subunit": "toshi",
   "symbol": "TP",
   "fractionDigits": 8,

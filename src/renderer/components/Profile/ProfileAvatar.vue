@@ -4,8 +4,8 @@
     v-on="$listeners"
   >
     <div
-      v-if="profile.avatar"
-      :style="profile.avatar ? `backgroundImage: url('${assets_loadImage(profile.avatar)}')` : ''"
+      v-if="profile && profile.avatar"
+      :style="profile && profile.avatar ? `backgroundImage: url('${assets_loadImage(profile.avatar)}')` : ''"
       class="ProfileAvatar__image background-image bg-center bg-no-repeat border-none"
     >
       <slot />
@@ -13,7 +13,7 @@
 
     <ButtonLetter
       v-else
-      :value="profile.name"
+      :value="profile ? profile.name : ''"
       :has-custom-style="true"
       :size="letterSize"
       class="ProfileAvatar__letter bg-theme-feature-item-selected text-theme-feature-item-selected-text"
@@ -36,7 +36,8 @@ export default {
   props: {
     profile: {
       type: Object,
-      required: true
+      required: false,
+      default: () => {}
     },
     letterSize: {
       type: String,

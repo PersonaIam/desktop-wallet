@@ -314,6 +314,7 @@ export default {
           transaction = await TransactionService.ledgerSign(this.currentWallet, transactionObject, this)
           success = true
         } catch (error) {
+          console.log('Error : ' + error)
           this.$error(`${this.$t('TRANSACTION.LEDGER_SIGN_FAILED')}: ${error.message}`)
         }
         this.showLedgerLoader = false
