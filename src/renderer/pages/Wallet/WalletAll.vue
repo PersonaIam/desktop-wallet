@@ -20,7 +20,7 @@
                 v-if="isMarketEnabled"
                 class="WalletAll__balance__alternative text-sm text-bold text-theme-page-text-light ml-2"
               >
-                {{ alternativeTotalBalance }}
+                {{ alternativeTotal }}
               </span>
             </h2>
           </div>
@@ -197,6 +197,7 @@ import { ProfileAvatar } from '@/components/Profile'
 import SvgIcon from '@/components/SvgIcon'
 import { WalletIdenticon, WalletRemovalConfirmation, WalletRenameModal, WalletButtonCreate, WalletButtonImport } from '@/components/Wallet'
 import WalletTable from '@/components/Wallet/WalletTable'
+import cryptocompare from '@/services/crypto-compare'
 
 export default {
   name: 'WalletAll',
@@ -219,17 +220,13 @@ export default {
     selectableWallets: [],
     walletToRemove: null,
     walletToRename: null,
-    isLoading: false
+    isLoading: false,
+    alternativeTotal: 0
   }),
 
   computed: {
     alternativeCurrency () {
       return this.$store.getters['session/currency']
-    },
-
-    alternativeTotalBalance () {
-      const balance = this.currency_subToUnit(this.totalBalance)
-      return this.currency_format(balance * this.price, { currency: this.alternativeCurrency })
     },
 
     isMarketEnabled () {
@@ -323,11 +320,16 @@ export default {
     }
     this.$eventBus.on('ledger:wallets-updated', this.refreshLedgerWallets)
     this.$eventBus.on('ledger:disconnected', this.ledgerDisconnected)
-
+    this.alternativeTotal = await this.alternativeTotalBalance()
     this.isLoading = false
   },
 
   methods: {
+    async alternativeTotalBalance () {
+      const balance = this.currency_subToUnit(this.totalBalance)
+      let price1 = await cryptocompare.fetchMarketData('PRSN')
+      return this.currency_format(balance * price1.price, { currency: this.alternativeCurrency })
+    },
     hideRemovalConfirmation () {
       this.walletToRemove = null
     },

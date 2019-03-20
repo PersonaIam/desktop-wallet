@@ -19,10 +19,9 @@ class CryptoCompare {
     }
 
     try {
-      const uri = `${MARKET.source.baseUrl}/data/pricemultifull`
+      const uri = `https://api.coingecko.com/api/v3/coins/persona`
       const response = await axios.get(uri, { params })
-      const data = response.data.RAW && response.data.RAW[token] ? response.data.RAW[token] : {}
-
+      const data = response.data.market_data ? response.data.market_data : {}
       return this.__transformMarketResponse(data)
     } catch (error) {
       logger.error(error)
@@ -134,18 +133,10 @@ class CryptoCompare {
    */
   __transformMarketResponse (response) {
     const marketData = {}
-
-    for (const currencyData of Object.values(response)) {
-      marketData[currencyData.TOSYMBOL] = {
-        currency: currencyData.TOSYMBOL,
-        price: currencyData.PRICE,
-        marketCap: currencyData.MKTCAP,
-        volume: currencyData.TOTALVOLUME24HTO,
-        date: new Date(currencyData.LASTUPDATE * 1000),
-        change24h: currencyData.CHANGEPCT24HOUR || null
-      }
-    }
-
+    marketData.price = response.current_price.btc
+    marketData.currency = 'BTC'
+    marketData.date = response.last_updated
+    marketData.change24h = response.price_change_percentage_24h
     return marketData
   }
 
