@@ -2,10 +2,10 @@
   "id": "mainnet",
   "name": "PERSONA Mainnet",
   "title": "Mainnet",
-  "server": "http://89.40.7.63:4102",
+  "server": "http://54.37.188.122:4103",
   "description": "Persona Mainnet",
   "imagePath": "networks/default.svg",
-  "apiVersion": 1,
+  "apiVersion": 2,
   "slip44": "111",
   "market": {
     "enabled": true,

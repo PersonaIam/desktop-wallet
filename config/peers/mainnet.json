@@ -1,26 +1,26 @@
   [
     {
-      "ip": "89.40.7.63",
-      "port": 4102,
+      "ip": "54.37.188.122",
+      "port": 4103,
       "isHttps": false,
-      "version": "1"
+      "version": "2"
     },
     {
-      "ip": "192.99.54.32",
-      "port": 4102,
+      "ip": "54.37.188.123",
+      "port": 4103,
       "isHttps": false,
-      "version": "1"
+      "version": "2"
     },
     {
-      "ip": "45.77.180.23",
-      "port": 4102,
+      "ip": "54.37.188.124",
+      "port": 4103,
       "isHttps": false,
-      "version": "1"
+      "version": "2"
     },
     {
-      "ip": "5.135.75.77",
-      "port": 4102,
+      "ip": "54.37.188.125",
+      "port": 4103,
       "isHttps": false,
-      "version": "1"
+      "version": "2"
     }
   ]
