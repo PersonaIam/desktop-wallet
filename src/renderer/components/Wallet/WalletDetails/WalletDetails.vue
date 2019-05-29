@@ -51,15 +51,6 @@
                 {{ votedDelegate.rank }}
               </strong>
             </i18n>
-            <i18n
-              tag="span"
-              class="font-semibold pl-6"
-              path="WALLET_DELEGATES.PRODUCTIVITY_BANNER"
-            >
-              <strong place="productivity">
-                {{ getProductivity() }}
-              </strong>
-            </i18n>
           </template>
         </div>
       </div>
