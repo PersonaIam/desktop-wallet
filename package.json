@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "PersonaClient",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PersonaIam/desktop-wallet.git"
